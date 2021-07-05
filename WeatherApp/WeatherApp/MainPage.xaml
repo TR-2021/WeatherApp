@@ -21,7 +21,8 @@
         </StackLayout>
             <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" HeightRequest="1"/>
         <CarouselView />
-        <view:WeatherIcon x:Name="weatherIcon" WeatherType="{Binding CurrentWeather,Converter={StaticResource forecastConverter}}"/>
+        <view:WeatherItem ItemDirection="Column" Temperature="54" WeatherTime="Yesterday" WeatherType="Sunny"/>
+
         <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" HeightRequest="1"/>
         <ListView VerticalOptions="FillAndExpand"/>
             <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" HeightRequest="1"/>

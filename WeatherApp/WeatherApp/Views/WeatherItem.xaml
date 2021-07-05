@@ -6,10 +6,10 @@
              x:Class="WeatherApp.Views.WeatherItem">
 
   <ContentView.Content>
-        <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
-            <Label Text="awd"/>
-            <views:WeatherIcon WeatherType="sunny.png"/>
-            <Label Text="awd"/>
+        <FlexLayout Direction="{Binding ItemDirection}" x:Name="flexLayout" JustifyContent="SpaceBetween" AlignItems="Center">
+            <Label x:Name="timeLabel" Text="{Binding WeatherTime}"/>
+            <views:WeatherIcon x:Name="weatherIcon" WeatherType="{Binding WeatherType}"/>
+            <Label x:Name="temperatureLabel" Text="{Binding Temperature}"/>
         </FlexLayout>
     </ContentView.Content>
 </ContentView>

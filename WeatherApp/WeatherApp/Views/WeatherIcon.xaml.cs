@@ -26,7 +26,6 @@ namespace WeatherApp.Views
             }
             set { 
                 SetValue(WeatherTypeProperty, value); 
-                weatherIcon.SetValue(Image.SourceProperty, value); 
             }
         }
         
