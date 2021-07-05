@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.Views.WeatherIcon">
+  <ContentView.Content>
+      <StackLayout>
+            <Image x:Name="weatherIcon" Aspect="AspectFit" HeightRequest="48" WidthRequest="48"/>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

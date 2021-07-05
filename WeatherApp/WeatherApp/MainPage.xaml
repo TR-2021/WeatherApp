@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:view="clr-namespace:WeatherApp.Views"
+             xmlns:converter="clr-namespace:WeatherApp.Converter"
+			 x:Class="WeatherApp.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:ForecastEnumToImageConverter x:Key="forecastConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout>
+        <StackLayout Padding="40" BackgroundColor="AntiqueWhite">
+            <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Title" Text="Cupertino"/>
+            <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Subtitle" Text="Mostly Sunny"/>
+            <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Header" Text="54"/>
+        </StackLayout>
+        <StackLayout Padding="0,0,15,30"  Spacing="20" Orientation="Horizontal">
+            <Label  FontSize="Default" FontAttributes="Bold" Text="Thursday"/>
+            <Label  FontSize="Default" Text="Today"/>
+        </StackLayout>
+            <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" HeightRequest="1"/>
+        <CarouselView />
+        <view:WeatherIcon x:Name="weatherIcon" WeatherType="{Binding CurrentWeather,Converter={StaticResource forecastConverter}}"/>
+        <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" HeightRequest="1"/>
+        <ListView VerticalOptions="FillAndExpand"/>
+            <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" HeightRequest="1"/>
+    </StackLayout>
+
+</ContentPage>
