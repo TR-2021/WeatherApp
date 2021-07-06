@@ -23,7 +23,8 @@
             </StackLayout>
             <StackLayout Padding="12">
                 <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="{StaticResource AppPrimaryColor}"/>
-                <CollectionView x:Name="weatherCollectionView" HeightRequest="300" ItemsSource="{Binding WeatherStateList}">
+                <CollectionView x:Name="weatherCollectionView" HeightRequest="300" ItemsSource="{Binding WeatherStateList}"
+                                 SelectionMode="Single">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <view:WeatherItem 
@@ -33,6 +34,7 @@
                                 Temperature="{Binding Temperature}"
                                 WeatherType="{Binding WeatherType}"
                                 WeatherTime="{Binding Time}"
+                                OnTap="WeatherItem_OnTap"
                             />
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -52,6 +54,7 @@
                                         Temperature="{Binding Temperature}"
                                         WeatherType="{Binding WeatherType}"
                                         WeatherTime="{Binding Day}"
+                                        OnTap="WeatherItem_OnTap"
                                     />
                                 </ViewCell.View>
                             </ViewCell>

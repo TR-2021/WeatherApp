@@ -13,6 +13,8 @@ namespace WeatherApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WeatherItem : ContentView
     {
+        public event EventHandler OnTap;
+
         public static readonly BindableProperty WeatherTimeProperty = BindableProperty.Create("WeatherTime", typeof(string), typeof(WeatherItem), "", propertyChanged: WeatherTimerPropertyChanged);
         public static readonly BindableProperty WeatherTypeProperty = BindableProperty.Create("WeatherType", typeof(ForecastEnum), typeof(WeatherItem), ForecastEnum.Thunder, propertyChanged: WeatherTypePropertyChanged);
         public static readonly BindableProperty TemperatureProperty = BindableProperty.Create("Temperature", typeof(string), typeof(WeatherItem), "", propertyChanged: TemperaturePropertyChanged);
@@ -21,7 +23,6 @@ namespace WeatherApp.Views
         public static readonly BindableProperty HumidityVisibleProperty = BindableProperty.Create("HumidityVisible", typeof(bool), typeof(WeatherItem), true, propertyChanged: HumidityVisiblePropertyChanged);
         public static readonly BindableProperty TextColorProperty = BindableProperty.Create("TextColor", typeof(Color), typeof(WeatherItem), Color.AliceBlue, propertyChanged: TextColorPropertyChanged);
 
-       
         public string WeatherTime 
         {
             get { return (string)GetValue(WeatherTimeProperty); } 
@@ -60,6 +61,13 @@ namespace WeatherApp.Views
         public WeatherItem()
         {
             InitializeComponent();
+            var tapGesture = new TapGestureRecognizer();
+            tapGesture.Tapped += (s, e) =>
+            {
+                if (OnTap != null)
+                    OnTap(this, new EventArgs());
+            };
+            GestureRecognizers.Add(tapGesture);
             //BindingContext = this;
         }
 
@@ -86,7 +94,6 @@ namespace WeatherApp.Views
         private static void HumidityVisiblePropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             (bindable as WeatherItem).humidityLabel.SetValue(Label.IsVisibleProperty,newValue);
-
         }
 
         private static void TextColorPropertyChanged(BindableObject bindable, object oldValue, object newValue)

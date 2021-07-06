@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using WeatherApp.Pages;
 using WeatherApp.Views;
 using Xamarin.Forms;
 using static WeatherApp.Converter.ForecastEnumToImageConverter;
@@ -13,8 +14,34 @@ namespace WeatherApp
         public MainPage()
         {
             PupulateList();
+            NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
             BindingContext = this;
+        }
+
+
+        private async void WeatherItem_OnTap(object sender, System.EventArgs e)
+        {
+            WeatherItem item = sender as WeatherItem;
+            if (item == null)
+                return;
+            Weather weather = new Weather();
+            weather.Humidity = item.Humidity;
+            weather.Time = item.WeatherTime;
+            weather.WeatherType = item.WeatherType;
+            weather.Temperature = item.Temperature;
+            // TODO Get WeatherObject properly
+
+            switch (item.ItemDirection) 
+            {
+                case FlexDirection.Column:
+                    await Navigation.PushAsync(new WeatherPage(weather), false);
+                    break;
+                case FlexDirection.Row:
+                   
+                    await Navigation.PushModalAsync(new WeatherIteamModalPage(weather),false);
+                    break;
+            }
         }
 
         private void PupulateList()
@@ -32,6 +59,8 @@ namespace WeatherApp
             WeatherStateList.Add(new Weather() { Temperature = "32", Time = "10AM", Humidity = "50", Day = "Thursday", WeatherType = ForecastEnum.Sunny });
             CurrentWeather = WeatherStateList[0];
         }
+
+
 
         public class Weather
         {
