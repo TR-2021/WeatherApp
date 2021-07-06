@@ -6,26 +6,35 @@
 			 x:Class="WeatherApp.MainPage">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converter:ForecastEnumToImageConverter x:Key="forecastConverter" />
+            <Color x:Key="AppPrimaryColor">white</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout>
-        <StackLayout Padding="40" BackgroundColor="AntiqueWhite">
-            <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Title" Text="Cupertino"/>
-            <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Subtitle" Text="Mostly Sunny"/>
-            <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Header" Text="54"/>
-        </StackLayout>
-        <StackLayout Padding="0,0,15,30"  Spacing="20" Orientation="Horizontal">
-            <Label  FontSize="Default" FontAttributes="Bold" Text="Thursday"/>
-            <Label  FontSize="Default" Text="Today"/>
-        </StackLayout>
-            <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" HeightRequest="1"/>
-        <CarouselView />
-        <view:WeatherItem ItemDirection="Column" Temperature="54" WeatherTime="Yesterday" WeatherType="Sunny"/>
+    <Grid>
+        <Image Source="main_page_bg.png " Aspect="AspectFill"/>
+        <StackLayout >
+            <StackLayout Padding="40" >
+                <Label TextColor="{StaticResource AppPrimaryColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Title" Text="{Binding CurrentWeather.Location}"/>
+                <Label TextColor="{StaticResource AppPrimaryColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Subtitle" Text="{Binding CurrentWeather.WeatherType}"/>
+                <Label TextColor="{StaticResource AppPrimaryColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Header" Text="{Binding CurrentWeather.Temperature}"/>
+            </StackLayout>
+            <StackLayout Padding="12,0,15,00"  Spacing="20" Orientation="Horizontal">
+                <Label TextColor="{StaticResource AppPrimaryColor}"  FontSize="Default" FontAttributes="Bold" Text="Thursday"/>
+                <Label TextColor="{StaticResource AppPrimaryColor}"  FontSize="Default" Text="Today"/>
+            </StackLayout>
+            <StackLayout Padding="12">
+                <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="{StaticResource AppPrimaryColor}"/>
+                <CollectionView x:Name="weatherCollectionView" HeightRequest="300">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal" />
+                    </CollectionView.ItemsLayout>
+                </CollectionView>
+                <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="{StaticResource AppPrimaryColor}"/>
+                <ListView x:Name="weatherListView" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never"/>
+                <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="{StaticResource AppPrimaryColor}"/>
 
-        <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" HeightRequest="1"/>
-        <ListView VerticalOptions="FillAndExpand"/>
-            <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" HeightRequest="1"/>
-    </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </Grid>
+   
 
 </ContentPage>
