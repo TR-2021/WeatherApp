@@ -23,18 +23,46 @@
             </StackLayout>
             <StackLayout Padding="12">
                 <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="{StaticResource AppPrimaryColor}"/>
-                <CollectionView x:Name="weatherCollectionView" HeightRequest="300">
+                <CollectionView x:Name="weatherCollectionView" HeightRequest="300" ItemsSource="{Binding WeatherStateList}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <view:WeatherItem 
+                                ItemDirection="Column"
+                                HumidityVisible="False"
+                                TextColor="White"
+                                Temperature="{Binding Temperature}"
+                                WeatherType="{Binding WeatherType}"
+                                WeatherTime="{Binding Time}"
+                            />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Horizontal" />
                     </CollectionView.ItemsLayout>
                 </CollectionView>
                 <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="{StaticResource AppPrimaryColor}"/>
-                <ListView x:Name="weatherListView" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never"/>
+                <ListView x:Name="weatherListView" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" ItemsSource="{Binding WeatherStateList}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <view:WeatherItem 
+                                        ItemDirection="Row"
+                                        TextColor="White"
+                                        Temperature="{Binding Temperature}"
+                                        WeatherType="{Binding WeatherType}"
+                                        WeatherTime="{Binding Day}"
+                                    />
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
                 <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="{StaticResource AppPrimaryColor}"/>
 
             </StackLayout>
         </StackLayout>
     </Grid>
-   
+
 
 </ContentPage>
