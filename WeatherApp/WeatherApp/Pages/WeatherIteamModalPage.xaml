@@ -1,34 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:converter="clr-namespace:WeatherApp.Converter"
              x:Class="WeatherApp.Pages.WeatherIteamModalPage"
              BackgroundColor="#33000000">
-    <ContentPage.Resources>
-        <converter:ForecastEnumToImageConverter x:Key="converter"/>
-        <Color x:Key="textColor">white</Color>
-    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid x:Name="backgroundView"   BackgroundColor="#33000000">
-            <Grid >
-                <Grid.Margin>
-                    <Thickness>
-                        <Thickness.Top>150</Thickness.Top>
-                        <Thickness.Left>50</Thickness.Left>
-                        <Thickness.Right>50</Thickness.Right>
-                        <Thickness.Bottom>150</Thickness.Bottom>
-                    </Thickness>
-                </Grid.Margin>
+            <Grid Margin="50,150,50,150">
                 <Frame CornerRadius="23" VerticalOptions="Fill" Padding="0" BorderColor="White">
                     <Image Source="main_page_bg.png" Aspect="AspectFill"/>
                 </Frame>
                 <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" >
-                    <Label TextColor="{StaticResource textColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Title" Text="{Binding Weather.Time}"/>
-                    <Label TextColor="{StaticResource textColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Subtitle" Text="{Binding Weather.Humidity}"/>
-                    <Label TextColor="{StaticResource textColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Header" Text="{Binding Weather.Temperature}"/>
-                    <Label TextColor="{StaticResource textColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Title" Text="{Binding Weather.WeatherType}"/>
+                    <Label TextColor="{StaticResource AppPrimaryColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Title" Text="{Binding Weather.Time}"/>
+                    <Label TextColor="{StaticResource AppPrimaryColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Subtitle" Text="{Binding Weather.Humidity}"/>
+                    <Label TextColor="{StaticResource AppPrimaryColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Header" Text="{Binding Weather.Temperature}"/>
+                    <Label TextColor="{StaticResource AppPrimaryColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Title" Text="{Binding Weather.WeatherType}"/>
                     <Image Source="{Binding  Weather.WeatherType, Converter={StaticResource converter}}" HeightRequest="128" WidthRequest="128"/>
-                    <Button Text="OK" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Clicked="Button_Clicked"/>
+                    <Button Text="OK" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Clicked="Button_Clicked" BackgroundColor="LightGray"/>
                 </StackLayout>
             </Grid>
         </Grid>

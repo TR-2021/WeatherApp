@@ -1,13 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WeatherApp.Pages.WeatherPage">
-   
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="WeatherApp.Pages.WeatherPage"
+             NavigationPage.HasNavigationBar="False">
+ 
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <Image Source="main_page_bg.png " Aspect="AspectFill"/>
+            <StackLayout>
+                <StackLayout Padding="16">
+                    <ImageButton Source="back_button.png" BackgroundColor="Transparent" HorizontalOptions="Start" Aspect="AspectFit" WidthRequest="24" Clicked="ImageButton_Clicked"/>
+                </StackLayout>
+                <StackLayout Padding="16,0" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" >
+                    <Label TextColor="{StaticResource textColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Title" Text="{Binding Weather.Time}"/>
+                    <Label TextColor="{StaticResource textColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Subtitle" Text="{Binding Weather.Humidity}"/>
+                    <Label TextColor="{StaticResource textColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Header" Text="{Binding Weather.Temperature}"/>
+                    <Label TextColor="{StaticResource textColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Title" Text="{Binding Weather.WeatherType}"/>
+                    <Image Source="{Binding  Weather.WeatherType, Converter={StaticResource converter}}" HeightRequest="128" WidthRequest="128"/>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

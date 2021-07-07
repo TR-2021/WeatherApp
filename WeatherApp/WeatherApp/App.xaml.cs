@@ -1,4 +1,5 @@
 ﻿using System;
+using WeatherApp.Pages;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,8 +10,7 @@ namespace WeatherApp
         public App()
         {
             InitializeComponent();
-
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new TabbedMainPage();
         }
 
         protected override void OnStart()

@@ -1,5 +1,8 @@
 ﻿using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
+using WeatherApp.Interfaces;
 using WeatherApp.Pages;
+using WeatherApp.Data;
 using WeatherApp.Views;
 using Xamarin.Forms;
 using static WeatherApp.Converter.ForecastEnumToImageConverter;
@@ -11,6 +14,8 @@ namespace WeatherApp
         //public static readonly BindableProperty CurrentWeatherProperty = BindableProperty.Create("CurrentWeather", typeof(ForecastEnum), typeof(MainPage), ForecastEnum.Thunder);
         public ObservableCollection<Weather> WeatherStateList { get; set; } = new ObservableCollection<Weather>();
         public Weather CurrentWeather { get; set; } = new Weather();
+        
+
         public MainPage()
         {
             PupulateList();
@@ -32,14 +37,13 @@ namespace WeatherApp
             weather.Temperature = item.Temperature;
             // TODO Get WeatherObject properly
 
-            switch (item.ItemDirection) 
+            switch (item.ItemDirection)
             {
                 case FlexDirection.Column:
                     await Navigation.PushAsync(new WeatherPage(weather), false);
                     break;
                 case FlexDirection.Row:
-                   
-                    await Navigation.PushModalAsync(new WeatherIteamModalPage(weather),false);
+                    await Navigation.PushModalAsync(new WeatherIteamModalPage(weather), false);
                     break;
             }
         }
@@ -60,17 +64,18 @@ namespace WeatherApp
             CurrentWeather = WeatherStateList[0];
         }
 
-
-
-        public class Weather
+        protected override void OnAppearing()
         {
-            public string Time { get; set; } = "NOW";
-            public string Location { get; set; } = "Cupertino";
-            public ForecastEnum WeatherType { get; set; } = ForecastEnum.Sunny;
-            public string Temperature { get; set; } = "123";
-            public string Day { get; set; } = "Monday";
-            public string Humidity { get; set; } = "55";
+            base.OnAppearing();
+            //IToast toast = DependencyService.Get<IToast>();
+            //toast.Toast("Appearing " + Title);
+        }
 
+        protected override void OnDisappearing()
+        {
+            IToast toast = DependencyService.Get<IToast>();
+            toast.Toast("DisAppearing" + Title);
+            base.OnDisappearing();
         }
     }
 }

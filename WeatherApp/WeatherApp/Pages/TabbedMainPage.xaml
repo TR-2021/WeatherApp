@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:WeatherApp"
+            xmlns:pages="clr-namespace:WeatherApp.Pages"
+            x:Class="WeatherApp.Pages.TabbedMainPage"
+            NavigationPage.HasNavigationBar="False"
+            CurrentPageChanged="TabbedPage_CurrentPageChanged">
+
+        <NavigationPage  IconImageSource="rain.png" Title="Rain">
+            <x:Arguments>
+                <local:MainPage/>
+            </x:Arguments>
+        </NavigationPage>
+
+        <NavigationPage  IconImageSource="play.png" Title="Cloudy">
+            <x:Arguments>
+            <pages:TestPage>
+                <x:Arguments>
+                    <x:String>TTT</x:String>
+                </x:Arguments>
+            </pages:TestPage>
+        </x:Arguments>
+        </NavigationPage>
+
+        <NavigationPage IconImageSource="thunder.png" Title="Thunder">
+            <x:Arguments>
+                <pages:TestPage>
+                    <x:Arguments>
+                        <x:String>Tab Thunder</x:String>
+                    </x:Arguments>
+                </pages:TestPage>
+            </x:Arguments>
+    </NavigationPage>
+</TabbedPage>
