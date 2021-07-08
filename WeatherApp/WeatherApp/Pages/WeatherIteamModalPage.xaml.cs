@@ -30,9 +30,9 @@ namespace WeatherApp.Pages
             this.BindingContext = this;
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
-            Navigation.PopModalAsync(false);
+            await Navigation.PopModalAsync(false);
         }
     }
 }

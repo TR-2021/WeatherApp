@@ -5,7 +5,7 @@
              BackgroundColor="#33000000">
     <ContentPage.Content>
         <Grid x:Name="backgroundView"   BackgroundColor="#33000000">
-            <Grid Margin="50,150,50,150">
+            <Grid Margin="50,150,50,150" >
                 <Frame CornerRadius="23" VerticalOptions="Fill" Padding="0" BorderColor="White">
                     <Image Source="main_page_bg.png" Aspect="AspectFill"/>
                 </Frame>

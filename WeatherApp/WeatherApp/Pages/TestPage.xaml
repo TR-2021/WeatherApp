@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:WeatherApp.Views"
              x:Class="WeatherApp.Pages.TestPage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
@@ -12,6 +13,8 @@
                 <Button Text="Change" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Clicked="Button_Clicked_1" BackgroundColor="LightGray"/>
                 <Button Text="{Binding [buttonEnglish]}" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Clicked="EnglishButtonClicked" BackgroundColor="LightGray"/>
                 <Button Text="{Binding [buttonRussian]}" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Clicked="RussianButtonClicked" BackgroundColor="LightGray"/>
+                <views:ImageTint Source="cloudy.png" TintColor="SeaGreen"/>
+
             </StackLayout>
         </Grid>
     </ContentPage.Content>

@@ -61,14 +61,15 @@ namespace WeatherApp.Views
         public WeatherItem()
         {
             InitializeComponent();
-            var tapGesture = new TapGestureRecognizer();
-            tapGesture.Tapped += (s, e) =>
-            {
-                if (OnTap != null)
-                    OnTap(this, new EventArgs());
-            };
-            GestureRecognizers.Add(tapGesture);
+         
             //BindingContext = this;
+        }
+
+        private void OnTapped()
+        {
+            if (OnTap != null)
+                OnTap(this, new EventArgs());
+
         }
 
         private static void WeatherTimerPropertyChanged(BindableObject bindable, object oldValue, object newValue)
