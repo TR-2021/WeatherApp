@@ -13,7 +13,6 @@ namespace WeatherApp.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WeatherIteamModalPage : ContentPage
     {
-
         public Weather Weather { get; set; } = new Weather();
         public WeatherIteamModalPage(Weather _weather)
         {

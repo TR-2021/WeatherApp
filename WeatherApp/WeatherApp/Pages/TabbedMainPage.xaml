@@ -13,7 +13,7 @@
             </x:Arguments>
         </NavigationPage>
 
-        <NavigationPage  IconImageSource="play.png" Title="Cloudy">
+      <NavigationPage  IconImageSource="play.png" Title="Cloudy">
             <x:Arguments>
             <pages:TestPage>
                 <x:Arguments>
@@ -22,7 +22,7 @@
             </pages:TestPage>
         </x:Arguments>
         </NavigationPage>
-
+    <!--
         <NavigationPage IconImageSource="thunder.png" Title="Thunder">
             <x:Arguments>
                 <pages:TestPage>
@@ -31,5 +31,5 @@
                     </x:Arguments>
                 </pages:TestPage>
             </x:Arguments>
-    </NavigationPage>
+    </NavigationPage>-->
 </TabbedPage>

@@ -5,18 +5,45 @@
              BackgroundColor="#33000000">
     <ContentPage.Content>
         <Grid x:Name="backgroundView"   BackgroundColor="#33000000">
-            <Grid Margin="50,150,50,150" >
-                <Frame CornerRadius="23" VerticalOptions="Fill" Padding="0" BorderColor="White">
+            <Grid RowDefinitions="*,*,*,*,*"
+                  ColumnDefinitions="*,5*,*">
+                <Frame Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" CornerRadius="23" VerticalOptions="Fill" Padding="0" BorderColor="White">
                     <Image Source="main_page_bg.png" Aspect="AspectFill"/>
                 </Frame>
-                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" >
-                    <Label TextColor="{StaticResource AppPrimaryColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Title" Text="{Binding Weather.Time}"/>
-                    <Label TextColor="{StaticResource AppPrimaryColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Subtitle" Text="{Binding Weather.Humidity}"/>
-                    <Label TextColor="{StaticResource AppPrimaryColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Header" Text="{Binding Weather.Temperature}"/>
-                    <Label TextColor="{StaticResource AppPrimaryColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Title" Text="{Binding Weather.WeatherType}"/>
-                    <Image Source="{Binding  Weather.WeatherType, Converter={StaticResource converter}}" HeightRequest="128" WidthRequest="128"/>
-                    <Button Text="OK" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Clicked="Button_Clicked" BackgroundColor="LightGray"/>
-                </StackLayout>
+                <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" RowDefinitions="*,4*,*,2*,2*" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+                    <Label Grid.Row="0"  
+                           TextColor="{StaticResource AppPrimaryColor}" 
+                           VerticalOptions="Center" 
+                           HorizontalOptions="FillAndExpand"  
+                           HorizontalTextAlignment="Center" 
+                           FontSize="Title" 
+                           Text="{Binding Weather.Time}"/>
+                    <Label Grid.Row="1"  
+                           VerticalOptions="CenterAndExpand" 
+                           TextColor="{StaticResource AppPrimaryColor}" 
+                           HorizontalOptions="FillAndExpand"  
+                           HorizontalTextAlignment="Center" 
+                           FontSize="Header" 
+                           Text="{Binding Weather.Temperature}"/>
+                    <Label Grid.Row="2"  
+                           TextColor="{StaticResource AppPrimaryColor}" 
+                           VerticalOptions="End"
+                           HorizontalOptions="FillAndExpand"  
+                           HorizontalTextAlignment="Center" 
+                           FontSize="Title" 
+                           Text="{Binding Weather.WeatherType}"/>
+                    <Image Grid.Row="3"  
+                           Source="{Binding  Weather.WeatherType, Converter={StaticResource converter}}" 
+                           VerticalOptions="FillAndExpand"
+                           HorizontalOptions="FillAndExpand"
+                           Aspect="AspectFit"/>
+                    <Button Grid.Row="4" 
+                            Text="OK" 
+                            VerticalOptions="Center" 
+                            HorizontalOptions="CenterAndExpand" 
+                            Clicked="Button_Clicked" 
+                            BackgroundColor="LightGray"/>
+                </Grid>
             </Grid>
         </Grid>
      </ContentPage.Content>

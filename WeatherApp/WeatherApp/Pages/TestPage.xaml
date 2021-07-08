@@ -2,19 +2,21 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:WeatherApp.Views"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              x:Class="WeatherApp.Pages.TestPage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <Grid x:Name="backgroundView"   BackgroundColor="#33000000">
+        <Grid x:Name="backgroundView"   BackgroundColor="#33000000" HorizontalOptions="FillAndExpand">
             <Image Source="main_page_bg.png" Aspect="AspectFill"/>
-                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" >
-                <Label TextColor="{StaticResource AppPrimaryColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Title" Text="{Binding [infoText]}"/>
+                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="10">
+                <!--<Label TextColor="{StaticResource AppPrimaryColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Title" Text="{Binding [infoText]}"/>
                 <Button Text="OK" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Clicked="Button_Clicked" BackgroundColor="LightGray"/>
                 <Button Text="Change" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Clicked="Button_Clicked_1" BackgroundColor="LightGray"/>
                 <Button Text="{Binding [buttonEnglish]}" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Clicked="EnglishButtonClicked" BackgroundColor="LightGray"/>
                 <Button Text="{Binding [buttonRussian]}" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Clicked="RussianButtonClicked" BackgroundColor="LightGray"/>
                 <views:ImageTint Source="cloudy.png" TintColor="SeaGreen"/>
-
+                    -->
+                <views:RadialProgressBar Value="24" x:Name="radialProgessBar"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
         </Grid>
     </ContentPage.Content>

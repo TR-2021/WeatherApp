@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SkiaSharp;
+using SkiaSharp.Views.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
@@ -17,23 +19,25 @@ namespace WeatherApp.Pages
     public partial class TestPage : ContentPage, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-
         public string Text { get; set; } = "NO TEXT";
         public string this[string text] => GetTranslatedText(text);
 
+        private float angle = 0;
+
         private CultureInfo _curentCulture = CultureInfo.CurrentUICulture;
+        private bool _pageIsActive;
 
         public TestPage()
         {
             InitializeComponent();
             this.BindingContext = this;
         }
+
         public TestPage(string text)
         {
             Text = text;
             InitializeComponent();
             this.BindingContext = this;
-            GetTranslatedText("infoText");
 
         }
         private async void Button_Clicked(object sender, EventArgs e)
@@ -46,7 +50,7 @@ namespace WeatherApp.Pages
             string text = "";
             try
             {
-                text = manager.GetString(key,_curentCulture);
+                text = manager.GetString(key, _curentCulture);
             }
             catch (Exception e)
             {
@@ -61,7 +65,6 @@ namespace WeatherApp.Pages
         private void Button_Clicked_1(object sender, EventArgs e)
         {
             Text = new Random().Next(1, 10).ToString();
-          
         }
 
         private void EnglishButtonClicked(object sender, EventArgs e)
@@ -73,10 +76,30 @@ namespace WeatherApp.Pages
             SetCultureInfo(new CultureInfo("ru"));
         }
 
-        public void SetCultureInfo(CultureInfo cultureInfo)
+        private void SetCultureInfo(CultureInfo cultureInfo)
         {
             _curentCulture = cultureInfo;
             PropertyChanged(this, new PropertyChangedEventArgs(null));
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _pageIsActive = true;
+            Device.StartTimer(TimeSpan.FromMilliseconds(33), () =>
+            {
+                angle += 0.9f;
+                if (angle > 360)
+                    angle -= 360;
+                radialProgessBar.Value = angle;
+                return _pageIsActive;
+            });
+        }
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            _pageIsActive = false;
+
+        }
+
     }
 }

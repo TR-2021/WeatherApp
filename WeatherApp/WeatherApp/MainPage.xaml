@@ -4,26 +4,25 @@
              xmlns:view="clr-namespace:WeatherApp.Views"
 			 x:Class="WeatherApp.MainPage"
              NavigationPage.HasNavigationBar="False">
-    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
         <Image Source="main_page_bg.png " Aspect="AspectFill"/>
-        <Grid RowDefinitions="5*,1*,5*">
-            <StackLayout>
-                <StackLayout Padding="40" >
-                    <Label TextColor="{StaticResource AppPrimaryColor}" HorizontalOptions="CenterAndExpand"   FontSize="Title" Text="{Binding CurrentWeather.Location}"/>
-                    <Label TextColor="{StaticResource AppPrimaryColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Subtitle" Text="{Binding CurrentWeather.WeatherType}"/>
-                    <Label TextColor="{StaticResource AppPrimaryColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Header" Text="{Binding CurrentWeather.Temperature}"/>
-                </StackLayout>
-                <StackLayout Padding="12,0,15,00"  Spacing="20" Orientation="Horizontal">
-                    <Label TextColor="{StaticResource AppPrimaryColor}"  FontSize="Default" FontAttributes="Bold" Text="Thursday"/>
-                    <Label TextColor="{StaticResource AppPrimaryColor}"  FontSize="Default" Text="Today"/>
-                </StackLayout>
-                <StackLayout Padding="12">
-                    <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="{StaticResource AppPrimaryColor}"/>
-                    <CollectionView x:Name="weatherCollectionView" HeightRequest="300" ItemsSource="{Binding WeatherStateList}"
+        <Grid RowDefinitions="30*,5*,50*" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0">
+            <StackLayout  Grid.Row="0"  VerticalOptions="CenterAndExpand">
+                <Label TextColor="{StaticResource AppPrimaryColor}" HorizontalOptions="CenterAndExpand"   FontSize="Title" Text="{Binding CurrentWeather.Location}"/>
+                <Label TextColor="{StaticResource AppPrimaryColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Subtitle" Text="{Binding CurrentWeather.WeatherType}"/>
+                <Label TextColor="{StaticResource AppPrimaryColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" FontSize="Header" Text="{Binding CurrentWeather.Temperature}"/>
+            </StackLayout>
+            <StackLayout  Grid.Row="1" Padding="12,0,15,0"  Spacing="20" Orientation="Horizontal" VerticalOptions="End">
+                <Label TextColor="{StaticResource AppPrimaryColor}"  FontSize="Default" FontAttributes="Bold" Text="Thursday"/>
+                <Label TextColor="{StaticResource AppPrimaryColor}"  FontSize="Default" Text="Today"/>
+            </StackLayout>
+            <StackLayout  Grid.Row="2" Padding="12">
+                <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="{StaticResource AppPrimaryColor}"/>
+                <CollectionView x:Name="weatherCollectionView" HeightRequest="300" ItemsSource="{Binding WeatherStateList}"
                                  SelectionMode="Single">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <view:WeatherItem 
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <view:WeatherItem 
                                 ItemDirection="Column"
                                 HumidityVisible="False"
                                 TextColor="{StaticResource AppPrimaryColor}"
@@ -32,19 +31,19 @@
                                 WeatherTime="{Binding Time}"
                                 OnTap="WeatherItem_OnTap"
                             />
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                        <CollectionView.ItemsLayout>
-                            <LinearItemsLayout Orientation="Horizontal" />
-                        </CollectionView.ItemsLayout>
-                    </CollectionView>
-                    <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="{StaticResource AppPrimaryColor}"/>
-                    <ListView x:Name="weatherListView" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" ItemsSource="{Binding WeatherStateList}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <ViewCell.View>
-                                        <view:WeatherItem 
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal" />
+                    </CollectionView.ItemsLayout>
+                </CollectionView>
+                <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="{StaticResource AppPrimaryColor}"/>
+                <ListView x:Name="weatherListView" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" ItemsSource="{Binding WeatherStateList}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <view:WeatherItem 
                                         ItemDirection="Row"
                                         TextColor="{StaticResource AppPrimaryColor}"
                                         Temperature="{Binding Temperature}"
@@ -52,14 +51,13 @@
                                         WeatherTime="{Binding Day}"
                                         OnTap="WeatherItem_OnTap"
                                     />
-                                    </ViewCell.View>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                    <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="{StaticResource AppPrimaryColor}"/>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="{StaticResource AppPrimaryColor}"/>
 
-                </StackLayout>
             </StackLayout>
         </Grid>
        

@@ -61,15 +61,14 @@ namespace WeatherApp.Views
         public WeatherItem()
         {
             InitializeComponent();
-         
+           
             //BindingContext = this;
         }
 
-        private void OnTapped()
+        private void OnTapped(object sender, EventArgs e)
         {
             if (OnTap != null)
                 OnTap(this, new EventArgs());
-
         }
 
         private static void WeatherTimerPropertyChanged(BindableObject bindable, object oldValue, object newValue)
